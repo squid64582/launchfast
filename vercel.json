@@ -1,0 +1,13 @@
+{
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/pagefind/:path*",
+      "destination": "https://docs.launchfa.st/pagefind/:path*"
+    },
+    {
+      "source": "/documentation/:path*",
+      "destination": "https://docs.launchfa.st/documentation/:path*"
+    }
+  ]
+}

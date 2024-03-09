@@ -1,0 +1,28 @@
+---
+const { CRISP_WEBSITE_ID } = Astro.props
+---
+
+{
+  /*
+  
+    A component that can be used anywhere in your app
+    Add this to the bottom of the page if you want to use it globally
+  
+    Use anywhere in your app like the following:
+  
+    <Crisp CRISP_WEBSITE_ID="0000-0000-0000-0000"  />
+  
+    */
+}
+
+<script define:vars={{ CRISP_WEBSITE_ID }}>
+  if (!(window['enabled_crisp'] === 1)) {
+    window.$crisp = []
+    window.CRISP_WEBSITE_ID = CRISP_WEBSITE_ID
+    d = document
+    s = d.createElement('script')
+    s.src = 'https://client.crisp.chat/l.js'
+    d.body.appendChild(s)
+    window['enabled_crisp'] = 1
+  }
+</script>

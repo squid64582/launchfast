@@ -1,0 +1,43 @@
+---
+import { AstroFont } from 'astro-font'
+---
+
+<AstroFont
+  config={[
+    {
+      src: [
+        {
+          weight: '400',
+          style: 'normal',
+          path: 'https://fonts.gstatic.com/s/archivo/v19/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTNDNZ9xdpBU7iVNRQ.woff2',
+        },
+        {
+          weight: '500',
+          style: 'normal',
+          path: 'https://fonts.gstatic.com/s/archivo/v19/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTBjNZ9xdpBU7iVNRQ.woff2',
+        },
+        {
+          weight: '600',
+          style: 'normal',
+          path: 'https://fonts.gstatic.com/s/archivo/v19/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTT6jRZ9xdpBU7iVNRQ.woff2',
+        },
+        {
+          weight: '700',
+          style: 'normal',
+          path: 'https://fonts.gstatic.com/s/archivo/v19/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTT0zRZ9xdpBU7iVNRQ.woff2',
+        },
+        {
+          weight: '800',
+          preload: true,
+          style: 'normal',
+          path: 'https://fonts.gstatic.com/s/archivo/v19/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTtDRZ9xdpBU7iVNRQ.woff2',
+        },
+      ],
+      preload: false,
+      display: 'swap',
+      name: 'Archivo',
+      fallback: 'sans-serif',
+      selector: '.font-display',
+    },
+  ]}
+/>

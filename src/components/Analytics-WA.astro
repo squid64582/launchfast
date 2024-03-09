@@ -1,0 +1,28 @@
+---
+const { ID } = Astro.props
+---
+
+{
+  /*
+  
+    A component that can be used anywhere in your app
+    Add this to the bottom of the page if you want to use it globally
+  
+    Use anywhere in your app like the following:
+  
+    <AnalyticsWA
+      ID="A12345678"
+    />
+  
+    */
+}
+
+<script define:vars={{ ID }}>
+  if (ID && ID.length > 1) {
+    const waScript = document.createElement('script')
+    waScript.id = 'waa'
+    waScript.defer = true
+    waScript.src = `https://stats.wideangle.co/script/${ID}.js`
+    document.head.appendChild(waScript)
+  }
+</script>

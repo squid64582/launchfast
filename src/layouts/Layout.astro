@@ -1,0 +1,35 @@
+---
+const { title } = Astro.props
+
+import SEO from '@/components/SEO.astro'
+import Crisp from '@/components/Crisp.astro'
+import Footer from '@/components/Footer.astro'
+import Header from '@/components/Header.astro'
+import Pirsch from '@/components/Pirsch.astro'
+import Divider from '@/components/Divider.astro'
+import { ViewTransitions } from 'astro:transitions'
+import LocalFont from '@/components/LocalFont.astro'
+import AnalyticsWA from '@/components/Analytics-WA.astro'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO {...title && { title }} />
+    <ViewTransitions />
+    <LocalFont />
+    <script async src="https://reflio.com/js/reflio.min.js" data-reflio="fgknp49icd5m5sm"></script>
+  </head>
+  <body class="font-display">
+    <Header />
+    <Divider className="mt-3 border-gray-100/50" />
+    <slot />
+    <Divider className="mt-3 border-gray-100/50" />
+    <Footer twitter="rishi_raj_jain_" brand_name="launchfa.st" />
+    <Crisp CRISP_WEBSITE_ID="c3341803-a246-4aa6-93f0-e1049480a5f8" />
+    <Pirsch DATA_ID="c27typUzqqEbIT3JgD8GMiuJhbzuvyDE" />
+    <AnalyticsWA ID="demoid" />
+  </body>
+</html>

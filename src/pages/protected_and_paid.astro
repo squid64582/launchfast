@@ -1,0 +1,46 @@
+---
+import redis from '@/lib/db/upstash'
+import { getSession } from '@/lib/utils/auth'
+
+const session: any = getSession(Astro.request)
+
+if (!session) {
+  return new Response('Unauthorized', {
+    status: 403,
+  })
+}
+
+if (session?.email) {
+  const paid = await redis.hget('access', session.email)
+  if (paid !== 1) {
+    return new Response('Unauthorized', {
+      status: 403,
+    })
+  }
+}
+
+import Footer from '@/components/Footer.astro'
+import Header from '@/components/Header.astro'
+import Divider from '@/components/Divider.astro'
+import { ViewTransitions } from 'astro:transitions'
+import GoogleFonts from '@/components/Google-Fonts.astro'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <GoogleFonts />
+    <ViewTransitions />
+  </head>
+  <body class="font-display">
+    <Header />
+    <Divider className="mt-3 border-gray-100/50" />
+    <div class="relative mx-auto flex max-w-7xl flex-col px-8 py-8">
+      <h1 class="pb-6 text-3xl font-medium text-launchfast">Protected!</h1>
+    </div>
+    <Divider className="mt-3 border-gray-100/50" />
+    <Footer twitter="rishi_raj_jain_" brand_name="launchfa.st" />
+  </body>
+</html>

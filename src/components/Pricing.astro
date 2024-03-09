@@ -1,0 +1,212 @@
+---
+import features from '@/lib/data/features'
+import Redemption from './Redemption.astro'
+
+const pricingFeatures = [...features.map((i) => i.heading), 'Integrations on-demand', 'Priority Support']
+---
+
+{
+  /*
+  
+    A component that can be used anywhere in your app to display pricing
+  
+    Use anywhere in your app like the following:
+  
+    <Pricing />
+  
+    */
+}
+
+<section id="pricing" class="mx-auto flex max-w-7xl flex-col gap-8 px-8 pb-16 pt-24">
+  <div class="flex flex-col text-left">
+    <p class="text-3xl sm:text-4xl">
+      <span class="animate-fade-400 border px-2 text-launchfast">Pay once</span>,
+      <span class="animate-fade-400 bg-astro whitespace-nowrap px-2 font-bold text-white shadow-2xl">use forever</span>
+    </p>
+    <p class="mt-3 text-xl text-gray-600">
+      LaunchFa.st Astro, Next.js and SvelteKit Boilerplates are each a one-time purchase. You get *all* the good things in a single purchase. <span class="text-black">
+        Buy the bundle
+      </span>
+       to get all in one!
+    </p>
+    <div class="mt-8 grid grid-cols-1 gap-8 rounded border p-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {
+        pricingFeatures.map((i) => (
+          <div class="flex flex-row items-center gap-x-3">
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="20 6 9 17 4 12"> </polyline>
+            </svg>
+            <span>{i}</span>
+          </div>
+        ))
+      }
+      <div class="flex flex-row items-center gap-x-3">
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line x1="12" x2="12" y1="5" y2="19"></line>
+          <line x1="5" x2="19" y1="12" y2="12"></line>
+        </svg>
+        <span class="underline">And many, many more</span>
+      </div>
+    </div>
+    <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="flex max-w-max flex-col border p-8">
+        <p class="text-4xl font-semibold tracking-tighter lg:text-5xl">
+          <span class="text-launchfast/50 line-through">198$</span>
+          <span class="ml-2 text-launchfast">79$</span>
+          <span class="ml-2 text-xs font-normal tracking-normal text-launchfast">/ forever</span>
+        </p>
+        <div class="mt-4 flex max-w-max -rotate-1 flex-row border px-2 text-xl">
+          <span class="font-semibold text-black">NEXTCONF</span>&nbsp;(<Redemption template="nextjs" />)
+        </div>
+        <div class="mt-8 flex flex-row items-center gap-x-3">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline points="20 6 9 17 4 12"> </polyline>
+          </svg>
+          <span>All goodness as above</span>
+        </div>
+        <div class="mt-8 flex flex-row items-center gap-x-3">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline points="20 6 9 17 4 12"> </polyline>
+          </svg>
+          <span>Next.js Boilerplate</span>
+        </div>
+        <form class="mt-8 shadow-2xl" method="post" action="/api/stripe/checkout">
+          <input class="hidden" type="text" name="template" value="nextjs" />
+          <button class="block max-w-max -rotate-1 rounded bg-black px-4 py-1 text-2xl font-medium text-white shadow hover:scale-[102.5%]">Get Next.js Boilerplate &rarr;</button>
+        </form>
+      </div>
+      <div class="flex max-w-max flex-col border p-8">
+        <p class="text-4xl font-semibold tracking-tighter lg:text-5xl">
+          <span class="text-launchfast/50 line-through">198$</span>
+          <span class="ml-2 text-launchfast">99$</span>
+          <span class="ml-2 text-xs font-normal tracking-normal text-launchfast">/ forever</span>
+        </p>
+        <div class="mt-4 flex max-w-max -rotate-1 flex-row border px-2 text-xl">
+          <span class="text-svelte font-semibold">SVELTE30</span>&nbsp;(<Redemption template="sveltekit" />)
+        </div>
+        <div class="mt-8 flex flex-row items-center gap-x-3">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline points="20 6 9 17 4 12"> </polyline>
+          </svg>
+          <span>All goodness as above</span>
+        </div>
+        <div class="mt-8 flex flex-row items-center gap-x-3">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline points="20 6 9 17 4 12"> </polyline>
+          </svg>
+          <span>SvelteKit Boilerplate</span>
+        </div>
+        <form class="mt-8 shadow-2xl" method="post" action="/api/stripe/checkout">
+          <input class="hidden" type="text" name="template" value="sveltekit" />
+          <button class="bg-svelte block max-w-max -rotate-1 rounded px-4 py-1 text-2xl font-medium text-white shadow hover:scale-[102.5%]">Get Svelte Boilerplate &rarr;</button>
+        </form>
+      </div>
+      <div class="flex max-w-max flex-col border p-8">
+        <p class="text-4xl font-semibold tracking-tighter lg:text-5xl">
+          <span class="text-launchfast/50 line-through">150$</span>
+          <span class="ml-2 text-launchfast">75$</span>
+          <span class="ml-2 text-xs font-normal tracking-normal text-launchfast">/ forever</span>
+        </p>
+        <div class="mt-4 flex max-w-max -rotate-1 flex-row border px-2 text-xl">
+          <span class="text-astro font-semibold">ASTROLAUNCH</span>&nbsp;(<Redemption template="astro" />)
+        </div>
+        <div class="mt-8 flex flex-row items-center gap-x-3">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline points="20 6 9 17 4 12"> </polyline>
+          </svg>
+          <span>All goodness as above</span>
+        </div>
+        <div class="mt-8 flex flex-row items-center gap-x-3">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Astro Boilerplate</span>
+        </div>
+        <form class="mt-8 shadow-2xl" method="post" action="/api/stripe/checkout">
+          <input class="hidden" type="text" name="template" value="astro" />
+          <button class="bg-astro block max-w-max -rotate-1 rounded px-4 py-1 text-2xl font-medium text-white shadow hover:scale-[102.5%]">Get Astro Boilerplate &rarr;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

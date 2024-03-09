@@ -1,0 +1,30 @@
+---
+const { name = import.meta.env.PUBLIC_FONT_NAME || 'Archivo', weights = [100, 200, 300, 400, 500, 600, 700, 800], display = 'swap' } = Astro.props
+
+const fontURL = new URL('/css2', 'https://fonts.googleapis.com')
+fontURL.searchParams.set('display', display)
+fontURL.searchParams.set('family', `${name}:wght@${weights.join(';')}`)
+---
+
+{
+  /*
+
+  A component that can be used anywhere in your app
+  Add this in the head of the page if you want to use it globally
+
+  Use anywhere in your app like the following:
+
+  <GoogleFonts
+    name="Inter"
+    display="Optional"
+    weights={[200, 300]}
+  />
+
+  Also, don't forget to change the name in the file: tailwind.config.cjs
+
+  */
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href={fontURL.toString()} rel="stylesheet" />

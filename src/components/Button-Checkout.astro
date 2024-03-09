@@ -1,0 +1,29 @@
+---
+const { minimal = false, brand_name = 'LaunchFast', className = 'bg-launchfast' } = Astro.props
+---
+
+{
+  /*
+  
+    A component that can be used anywhere in your app to open a Stripe checkout
+  
+    Use anywhere in your app like the following:
+  
+    <ButtonCheckout />
+  
+    */
+}
+
+<form method="post" action="/api/stripe/checkout">
+  <button class:list={['flex cursor-pointer flex-row items-center justify-center gap-x-2 rounded-full text-white', minimal ? 'py-1 pl-2 pr-4' : 'px-10 py-3', className]}>
+    <img
+      loading="lazy"
+      alt="LaunchFast Logo"
+      src="/purple-icon.png"
+      width={minimal ? '24' : '30'}
+      height={minimal ? '24' : '30'}
+      class={minimal ? 'w-[24px] h-[24px]' : 'w-[30px] h-[30px]'}
+    />
+    <span> Get {brand_name}</span>
+  </button>
+</form>

@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets'
+import ButtonCheckout from './Button-Checkout.astro'
+
+const {
+  makersCount = 325,
+  brand_name = 'LaunchFast',
+  hero_image = '/display.png',
+  badge_link = 'https://www.producthunt.com/posts/launchfast',
+  avatars = [
+    {
+      name: 'Random',
+      image: 'https://shipfa.st/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flennard.a8caddd5.jpeg&w=828&q=75',
+    },
+  ],
+} = Astro.props
+---
+
+{
+  /*
+  
+    A component that can be used anywhere in your app
+  
+    Use anywhere in your app like the following:
+  
+    <Hero
+      brand_name="Something"
+      hero_image="Your Image Link"
+    />
+  
+    */
+}
+
+<section class="mx-auto flex max-w-7xl flex-col items-center justify-center gap-16 px-8 py-8 lg:flex-row lg:items-start lg:gap-20 lg:py-20">
+  <div class="flex flex-col items-center justify-center gap-10 text-center lg:items-start lg:gap-14 lg:text-left">
+    <h1 class="flex max-w-2xl flex-col items-center gap-3 text-4xl font-extrabold tracking-tight md:-mb-4 lg:items-start lg:text-6xl">
+      Launch your startup in a day, not in a week
+    </h1>
+    <p class="text-lg leading-relaxed opacity-80">
+      The Astro boilerplate with all you need to build your SaaS, AI tool, or any other web app. From idea to production in 3 minutes.
+    </p>
+    <div class="space-y-4">
+      <ButtonCheckout className="bg-launchfast w-[280px]" />
+      <p class="w-full">
+        🎁 <span class="text-accent font-semibold">$75 off</span> for the first 10,000 customers!
+      </p>
+    </div>
+  </div>
+  <div class="max-md:-m-4 lg:w-full">
+    <Image
+      width="1080"
+      height="1080"
+      src="/display.png"
+      class="w-full rounded shadow-2xl shadow-black"
+      alt="Upstash + Upstash Redis + Resend + Stripe + Lemon Squeezy + Astro + Tailwind + Astro Google OAuth2 = LaunchFast"
+    />
+  </div>
+</section>

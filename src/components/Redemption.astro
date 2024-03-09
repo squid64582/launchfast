@@ -1,0 +1,17 @@
+---
+import { slug } from 'github-slugger'
+
+const { template } = Astro.props
+
+const slugged = slug(`redemptions-${template}`)
+---
+
+<div id={slugged}>... left</div>
+
+<script define:vars={{ template, slugged }}>
+  fetch('/api/stripe/redemption?template=' + template)
+    .then((res) => res.json())
+    .then((res) => {
+      document.querySelector(`#${slugged}`).textContent = `${res.left} left`
+    })
+</script>

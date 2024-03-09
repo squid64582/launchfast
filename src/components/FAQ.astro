@@ -1,0 +1,113 @@
+---
+import { slug } from 'github-slugger'
+
+const {
+  faqs = [
+    {
+      question: 'What do I get exactly?',
+      answer: `1/ The Astro repo with all the boilerplate code you need to run an online business: a payment system, a database, login, UI components, and much more.\n2/ The documentation helps you set up your app from scratch, write copy that sells, and launch fast.\n3/ Access to the GitHub with makers who build & launch fast!`,
+    },
+    {
+      question: 'But why Astro?',
+      answer: `Astro alongwith HTML, provides you the ability to write in any reactive library: Vue, React, Preact, you name it! while still server side rendering the app, maintaining your SEO on it's way.`,
+    },
+    {
+      question: 'I do not know what is Astro, can I still use it?',
+      answer: `The reason for choosing Astro is to solve this for you. You are good to go if you know any just HTML. OR React OR Preact OR Vue OR Svelte OR SolidJS, each of them even together are supported with Astro!`,
+    },
+    {
+      question: 'What all payment methods are supported?',
+      answer: `Selling via Lemon Squeezy makes me have more than just Stripe and PayPal. Apple Pay, Google Pay, Alipay, WeChat Pay, Cash App Pay and ACH are also supported!`,
+    },
+    {
+      question: 'Is it a website template?',
+      answer: `It's not just a template. It's all in one standalone components and APIs written on top of the Web API that can be used in any project.\nYou can copy/paste sections to build your site quickly, like a pricing, hero or FAQ section, or a bunch of UI components like buttons, etc, or the endpoints configured under the /api directory.\nOh don't forget, it has a killer SEO component written in bare HTML!`,
+    },
+    {
+      question: 'I can build it myself, why should I buy it?',
+      answer: "True. While you're building it, others are launching theirs.",
+    },
+    {
+      question: 'Can I get a refund?',
+      answer:
+        'Please contact at jain71000@gmail.com and describe the refund reason. Once I receive your refund request, I will inspect it and notify you about the decision. Usually, I can not make a refund because all the products are digital.',
+    },
+  ],
+} = Astro.props
+
+faqs.forEach((i, _) => {
+  faqs[_]['labelID'] = slug(i['question'])
+  faqs[_]['viewID'] = 'view-' + faqs[_]['labelID']
+  faqs[_]['css'] = `<style>
+#${faqs[_]['viewID']} {
+  display: none;
+}
+#${faqs[_]['labelID']}:checked + #${faqs[_]['viewID']} {
+  display: flex;
+}
+</style>`
+})
+---
+
+{
+  /*
+
+  A component that can be used anywhere in your app
+
+  Use anywhere in your app like the following:
+
+  <FAQ
+    faqs={
+      [
+        { question: `Hey, who's this?`, answer: `It's me, ma!` },
+        { question: `Hey, who's this agan?`, answer: `Hey ma, it's me again!` }
+      ]
+    }
+  />
+
+  */
+}
+
+<section id="faq">
+  <div class="mx-auto flex max-w-7xl flex-col gap-8 px-8 py-24">
+    <div class="flex flex-col text-left">
+      <p class="text-base-content text-3xl font-extrabold text-launchfast sm:text-4xl">Questions and Answers</p>
+    </div>
+    <ul class="basis-1/2">
+      {
+        faqs.map((i) => (
+          <>
+            <li class="group">
+              <label
+                for={i.labelID}
+                class="border-base-content/10 relative flex w-full cursor-pointer items-center gap-2 border-t py-5 text-left text-base font-semibold md:text-lg"
+                onclick={`document.querySelector('#icon-plus-${i.labelID}').classList.toggle('hidden'); document.querySelector('#icon-minus-${i.labelID}').classList.toggle('hidden');`}
+              >
+                <span class="text-base-content flex-1 font-medium">{i.question}</span>
+                <svg id={`icon-minus-${i.labelID}`} class="ml-auto hidden h-4 w-4 flex-shrink-0 fill-current" viewBox="0 0 16 16" xmlns="https://www.w3.org/2000/svg">
+                  <rect y="7" width="16" height="2" rx="1" class="origin-center rotate-180 transform transition duration-200 ease-out" />
+                </svg>
+                <svg id={`icon-plus-${i.labelID}`} class="ml-auto block h-4 w-4 flex-shrink-0 fill-current" viewBox="0 0 16 16" xmlns="https://www.w3.org/2000/svg">
+                  <rect y="7" width="16" height="2" rx="1" class="false origin-center transform transition duration-200 ease-out" />
+                  <rect y="7" width="16" height="2" rx="1" class="false origin-center rotate-90 transform transition duration-200 ease-out" />
+                </svg>
+              </label>
+              <input class="hidden" type="checkbox" id={i.labelID} />
+              <div id={i.viewID} class="mb-5 overflow-hidden whitespace-pre-line">
+                {i.answer}
+              </div>
+            </li>
+          </>
+        ))
+      }
+      <div class="text-base-content/80 border-t pt-4">
+        Got more? Send me a DM on
+        <a class="text-base-content border-b border-launchfast" target="_blank" href="https://twitter.com/rishi_raj_jain_">Twitter</a>
+         or by
+        <a href="mailto:jain71000@gmail.com" target="_blank" class="text-base-content border-b border-launchfast">email</a>.
+      </div>
+    </ul>
+  </div>
+</section>
+
+{faqs.map((i) => <Fragment set:html={i.css} />)}

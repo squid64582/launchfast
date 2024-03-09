@@ -1,0 +1,74 @@
+---
+const {
+  minimal = false,
+  brand_name = 'LaunchFast',
+  className = 'bg-launchfast',
+  product_url = 'https://launchfast.lemonsqueezy.com/checkout/buy/30dd570f-3598-440d-a29a-1e002bda0eb6?checkout[discount_code]=M0OTIWMA',
+} = Astro.props
+
+const BUTTON_ID = 'checkout_' + new Date().getTime().toString()
+---
+
+{
+  /*
+  
+    A component that can be used anywhere in your app to open a Lemon Squeezy checkout
+  
+    Use anywhere in your app like the following:
+  
+    <ButtonLSCheckout
+      product_url="https://launchfast.lemonsqueezy.com/checkout/buy/30dd570f-3598-440d-a29a-1e002bda0eb6?checkout[discount_code]=M0OTIWMA"
+    />
+  
+    */
+}
+
+<button
+  id={BUTTON_ID}
+  random-attribute={product_url}
+  class:list={['flex flex-row items-center justify-center gap-x-2 rounded-full text-white', minimal ? 'py-1 pl-2 pr-4' : 'px-10 py-3', className]}
+>
+  <img
+    loading="lazy"
+    alt="LaunchFast Logo"
+    src="/purple-icon.png"
+    width={minimal ? '24' : '30'}
+    height={minimal ? '24' : '30'}
+    class={minimal ? 'w-[24px] h-[24px]' : 'w-[30px] h-[30px]'}
+  />
+  <span> Get {brand_name}</span>
+</button>
+
+<script define:vars={{ BUTTON_ID }}>
+  const buttonElement = document.querySelectorAll('#' + BUTTON_ID)
+  const setupLS = () => {
+    window.createLemonSqueezy()
+    if (buttonElement) {
+      buttonElement.forEach((i) => i.classList.remove('pointer-events-none'))
+      buttonElement.forEach((i) => {
+        i.addEventListener('click', () => {
+          window.LemonSqueezy.Url.Open(i.getAttribute('random-attribute'))
+        })
+      })
+    }
+    window['hasLemonSqueezy'] = true
+    window.LemonSqueezy.Setup({
+      eventHandler: (event) => {
+        console.log(event)
+      },
+    })
+  }
+  if (buttonElement) buttonElement.forEach((i) => i.classList.add('pointer-events-none'))
+  if (window['hasLemonSqueezy']) {
+    setupLS()
+  } else {
+    var script = document.createElement('script')
+    script.onload = () => {
+      setTimeout(() => {
+        setupLS()
+      }, 100)
+    }
+    script.src = 'https://assets.lemonsqueezy.com/lemon.js'
+    document.head.appendChild(script)
+  }
+</script>

@@ -1,0 +1,89 @@
+---
+// Use this to pre-render on per page basis
+export const prerender = true
+
+import FAQ from '@/components/FAQ.astro'
+import Layout from '@/layouts/Layout.astro'
+import Pricing from '@/components/Pricing.astro'
+import Divider from '@/components/Divider.astro'
+import Features from '@/components/Features.astro'
+import Testimonials from '@/components/Testimonials.astro'
+---
+
+<Layout>
+  <div class="relative mx-auto mt-12 flex max-w-[900px] flex-col items-center px-4 sm:mt-24 sm:px-8 xl:px-0">
+    <div
+      style="background: radial-gradient(white, #ffe8a930, white);"
+      class="absolute left-1/2 top-1/3 -z-10 h-[300px] w-full -translate-x-1/2 -translate-y-1/2 -rotate-[4deg] transform"
+    >
+    </div>
+    <a href="https://www.producthunt.com/posts/launchfast/" target="_blank" class="flex flex-row items-center justify-center">
+      <img
+        height="54"
+        width="250"
+        loading="lazy"
+        alt="LaunchFast Logo"
+        class="rounded-lg bg-gray-100"
+        src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=417262&theme=light"
+      />
+    </a>
+    <h1 class="mt-6 text-center text-4xl font-extrabold leading-[3rem] md:text-5xl md:!leading-[4rem]">
+      <span class="text-gray-600">Launch your apps&nbsp;</span>
+      <span class="animate-fade-200 whitespace-nowrap border border-gray-800 px-1 text-gray-600">in hours</span>
+      <span class="text-gray-600"> with these&nbsp;</span>
+      <span class="animate-fade-400 bg-astro whitespace-nowrap px-2 text-white shadow-2xl">Astro</span>
+      <span class="text-gray-600">,</span>
+      <span class="animate-fade-400 whitespace-nowrap bg-black/75 px-2 text-white shadow-2xl">Next.js</span>
+      <span class="text-gray-600"> and&nbsp;</span>
+      <span class="animate-fade-400 bg-svelte whitespace-nowrap px-2 text-white shadow-2xl">SvelteKit</span>
+      <span class="text-gray-600"> boilerplates</span>
+    </h1>
+    <p class="animate-fade-600 mt-4 text-center text-gray-400">Maximize Your Productivity with LaunchFa.st Templates</p>
+    <p class="animate-fade-600 mt-2 max-w-xl text-center text-xl text-gray-600 md:text-2xl">
+      <span class="text-black">SEO</span>, <span class="text-black">Analytics</span>, <span class="text-black">Storage</span>, <span class="text-black">Auth</span>,
+      <span class="text-black"> Payments</span>, and <span class="text-black">Email</span> starter at your fingertips, in a click.
+    </p>
+    <div class="mt-12 flex flex-col flex-wrap items-center justify-center gap-y-8 sm:flex-row sm:items-start sm:gap-x-3 sm:gap-y-0">
+      <a href="#pricing" class="bg-branding w-[300px] rounded-lg py-[0.7rem] text-center text-lg text-white shadow-2xl transition duration-200 hover:-rotate-1 hover:scale-105">
+        Get LaunchFast Boilerplates &rarr;
+      </a>
+      <a href="#features" class="border-svelte text-svelte hover:bg-svelte w-[180px] rounded-lg border py-3 text-center transition duration-200 hover:-rotate-1 hover:text-white">
+        Know More &rarr;
+      </a>
+    </div>
+  </div>
+  <Divider className="mt-12 border-gray-100/50" />
+  <!-- <div class="mt-12 flex flex-col items-center">
+    <a
+      id="demo"
+      target="_blank"
+      rel="noreferrer"
+      href="https://twitter.com/rishi_raj_jain_/status/1708534109474378080"
+      class="flex w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-white/20 bg-blue-100 px-7 py-2 shadow-2xl transition-all hover:bg-blue-200"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 204" class="h-5 w-5 text-[#1d9bf0]">
+        <path
+          fill="currentColor"
+          d="M221.95 51.29c.15 2.17.15 4.34.15 6.53 0 66.73-50.8 143.69-143.69 143.69v-.04c-27.44.04-54.31-7.82-77.41-22.64 3.99.48 8 .72 12.02.73 22.74.02 44.83-7.61 62.72-21.66-21.61-.41-40.56-14.5-47.18-35.07 7.57 1.46 15.37 1.16 22.8-.87-23.56-4.76-40.51-25.46-40.51-49.5v-.64c7.02 3.91 14.88 6.08 22.92 6.32C11.58 63.31 4.74 33.79 18.14 10.71c25.64 31.55 63.47 50.73 104.08 52.76-4.07-17.54 1.49-35.92 14.61-48.25 20.34-19.12 52.33-18.14 71.45 2.19 11.31-2.23 22.15-6.38 32.07-12.26-3.77 11.69-11.66 21.62-22.2 27.93 10.01-1.18 19.79-3.86 29-7.95-6.78 10.16-15.32 19.01-25.2 26.16z"
+        ></path>
+      </svg>
+      <p class="text-sm font-semibold text-[#1d9bf0]">Introducing LaunchFast</p>
+    </a>
+    <iframe
+      width="300"
+      loading="lazy"
+      height="168.75"
+      allowfullscreen
+      title="LaunchFast Demo — 0.5x if too fast 😉"
+      src="https://www.youtube.com/embed/NgyDG8qxz18"
+      class="mt-8 aspect-video h-screen max-h-[50vw] w-full rounded-lg shadow-2xl sm:max-h-[39vw] sm:max-w-[70%]"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+  </div> -->
+  <Features />
+  <Divider className="mt-12 border-gray-100/50" />
+  <Pricing />
+  <Divider className="border-gray-100/50" />
+  <Testimonials />
+  <Divider className="mt-12 border-gray-100/50" />
+  <FAQ />
+</Layout>
